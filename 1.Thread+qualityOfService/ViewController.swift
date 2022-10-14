@@ -33,12 +33,13 @@ class ViewController: UIViewController {
     }
 }
 
-
+//чтобы в НЕглавном потоке появился RunLoop, который обеспечит работу асинхронного кода, таймеров, уведомлений realm, то нужно override func main написать то, что хочешь, чтобы выполнилось параллельно и создать RunLoop - RunLoop.current.run
 class Thread3: Thread {
     override func main() {
-        for _ in 0...100 {
-            print("3rd_____________________")
+        Timer.scheduledTimer(withTimeInterval: 0.0005, repeats: true) { _ in
+            print("ok")
         }
+        RunLoop.current.run(until: Date() + 3) //запускаем RunLoop.current.run ПОСЛЕ кода, кот должен выполниться в текущем потоке (в НЕглавном)
     }
 }
 
