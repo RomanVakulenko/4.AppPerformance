@@ -42,7 +42,7 @@ class Thread3: Thread {
         Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { _ in
             print("ok")
         } //
-        RunLoop.current.run(until: Date() + 3) //запускаем RunLoop.current.run ПОСЛЕ кода, кот должен выполниться в текущем потоке (в НЕглавном)
+        RunLoop.current.run(until: Date() + 20) //запускаем RunLoop.current.run ПОСЛЕ кода, кот должен выполниться в текущем потоке (в НЕглавном), Если требуется остановка, можно запустить RunLoop на какое-то время. Например, на 20 секунд, иначе поток никогда не остановится
     }
 }
 
